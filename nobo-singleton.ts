@@ -12,6 +12,7 @@ export interface NoboSingleton_publicInterface {
     object: T,
     fn: (i: I) => O
   ) => { [k: string]: O };
+  isPromise: (v: any) => boolean;
 }
 
 export declare var noboSingleton: NoboSingleton_publicInterface;
