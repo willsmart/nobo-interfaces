@@ -1,6 +1,6 @@
 // TODO document
 
-import { anyValue } from "../any";
+import { anyValue } from "./any";
 
 export interface CodeSnippetCallInstance {
   retryAfterPromise(promise: Promise<void>, name: string): void;
