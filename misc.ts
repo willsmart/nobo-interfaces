@@ -1,13 +1,15 @@
+import { anyValue } from "./any";
+
 // TODO document
 
 export interface Constructable<T> {
-  from(v: any): T | undefined;
+  from(v: anyValue): T | undefined;
 }
 
-export type Caster<T> = (v: any) => T | undefined;
+export type Caster<T> = (v: anyValue) => T | undefined;
 
-export interface TypeHelper<T> {
-  castFrom(v: any): T;
-  describes(v: any): v is T;
+export interface TypeHelper<T extends anyValue> {
+  castFrom(v: anyValue): T;
+  describes(v: anyValue): v is T;
   getDefaultValue(): T;
 }
