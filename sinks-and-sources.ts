@@ -74,6 +74,8 @@ export interface ValueSink_registryInterface<T> extends ValueSink_publicInterfac
 
 export interface SourceName<_T> extends String {}
 
+export type SourceGenerator<T> = (name: SourceName<T>) => ValueSource_ownerInterface<T>;
+
 export interface ValueSourceRegistry_publicInterface<T> {
   has(name: SourceName<T>): boolean;
   attachSinkToSource(sourceName: SourceName<T>, sink: ValueSink_registryInterface<T>): ValueSink_registryInterface<T>;
