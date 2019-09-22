@@ -42,7 +42,7 @@ export interface ValueSource_ownerInterface<T> {
   //                                                          Return state info after the sink was removed
   cleanup(): Promise<void>; //                                Release all resources held by this source
   //                                                          as it is about to be freed by its owner
-  sinkInterface: ValueSource_sinkInterface<T>;
+  sinkInterface(): ValueSource_sinkInterface<T>;
 }
 
 // the source interface presented to subclasses
@@ -50,7 +50,7 @@ export interface ValueSource_subclassInterface<T> {
   subclassValueWasInvalidated(): Promise<void>; //      Called when the source becomes invalid
   subclassHasNewValue(v: T): Promise<T>; //             Called when the source gets a new value
   valueFromSubclass(): Promise<T>; //                   Called to get the canonical value of the source from the subclass
-  setValueInSubclass(v: T): Promise<T>; //              Called to request that the value be changed
+  setValueInSubclass(v: T): Promise<T> | undefined; //              Called to request that the value be changed
 }
 
 // The sink interface presented to the world

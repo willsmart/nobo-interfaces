@@ -36,7 +36,7 @@ export abstract class ValueSource_abstract<T> implements ValueSource_sinkInterfa
       addSink: this.addSink.bind(this),
       removeSink: this.removeSink.bind(this),
       cleanup: this.cleanup.bind(this),
-      sinkInterface: this,
+      sinkInterface: () => this,
     };
     const _verifyThatThisImplementsTheSubclassInterface: ValueSource_subclassInterface<T> = {
       valueFromSubclass: this.valueFromSubclass,
@@ -93,7 +93,7 @@ export abstract class ValueSource_abstract<T> implements ValueSource_sinkInterfa
   // ValueSource_subclassInterface
   // the interface presented to subclasses
   protected abstract async valueFromSubclass(): Promise<T>;
-  protected abstract setValueInSubclass(v: T): Promise<T>;
+  protected abstract setValueInSubclass(v: T): Promise<T> | undefined;
   protected subclassValueWasInvalidated(): Promise<void> {
     this.privateData.valid = false;
     return this.notifySinks();
