@@ -27,6 +27,15 @@ export interface NoboSingleton_publicInterface {
   isPromise(v: anyValue): boolean;
   handlePromise: HandlePromise;
   promiseOwner: PromiseHandlerOwner_promiseHandlerInterface;
+  delayedSourceCleaningPolicy({
+    handlePromise,
+    delayMs,
+    sliceMs,
+  }: {
+    handlePromise: HandlePromise;
+    delayMs: number;
+    sliceMs: number;
+  }): ValueSourceCleaningPolicy_publicInterface;
 }
 
 export declare var noboSingleton: NoboSingleton_publicInterface;
