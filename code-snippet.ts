@@ -1,6 +1,6 @@
 // TODO document
 
-import { anyValue } from "./any";
+import { anyValue } from './any';
 
 export interface CodeSnippetCallInstance {
   retryAfterPromise(promise: Promise<void>, name: string): void;
@@ -14,6 +14,8 @@ export interface CodeSnippetArg {
 }
 
 export type CodeSnippetSideEffect = { run: () => Promise<void> | undefined; name?: string };
-export type CodeSnippetCallSuccess = { result?: anyValue; sideEffects: CodeSnippetSideEffect[] };
-export type CodeSnippetCallRetry = { retryingAfterPromises?: string[] };
-export type CodeSnippetCallResult = CodeSnippetCallSuccess | CodeSnippetCallRetry;
+export type CodeSnippetCallSuccess<T> = { result: T; sideEffects: CodeSnippetSideEffect[] };
+export type CodeSnippetCallResult<T> = {
+  retryingAfterPromises?: string[];
+  promise: Promise<CodeSnippetCallSuccess<T>>;
+};

@@ -4,7 +4,7 @@ import {
   ValueSource_subclassInterface,
   ValueSink_publicInterface as ValueSink,
   ValueSource_stateForOwner,
-} from "./sinks-and-sources";
+} from './sinks-and-sources';
 
 interface PrivateData<T> {
   valueGetterPromise?: Promise<T>;
@@ -17,7 +17,7 @@ export type ValueSourceInterfacePassback<T> = {
   owner?: ValueSource_ownerInterface<T>;
 };
 
-export abstract class ValueSource_abstract<T> implements ValueSource_sinkInterface<T> {
+export abstract class AbstractValueSource<T> implements ValueSource_sinkInterface<T> {
   constructor({
     interfacePassback,
     value,
@@ -48,7 +48,7 @@ export abstract class ValueSource_abstract<T> implements ValueSource_sinkInterfa
   // ValueSource_sinkInterface
   // The interface presented to attached sinks or anyone who has a reference to the source
   setValue(v: T): Promise<T> {
-    throw new Error("Method not implemented.");
+    throw new Error('Method not implemented.');
   }
   get valid() {
     return this.privateData.valid;

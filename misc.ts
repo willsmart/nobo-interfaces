@@ -1,4 +1,4 @@
-import { anyValue } from "./any";
+import { anyValue } from './any';
 
 // TODO document
 
@@ -6,7 +6,7 @@ export interface Constructable<T> {
   from(v: anyValue): T | undefined;
 }
 
-export type Caster<T> = (v: anyValue) => T | undefined;
+export type Caster<T> = (v: anyValue) => T;
 
 export interface TypeHelper<T extends anyValue> {
   castFrom(v: anyValue): T;
