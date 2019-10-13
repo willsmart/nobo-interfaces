@@ -1,5 +1,5 @@
 import { SourceRegistry_sinkInterface } from "./sinks-and-sources";
-import { CodeSnippet } from "../code-snippet";
+import { CodeSnippet } from "../source/code-snippet";
 
 // TODO document
 
