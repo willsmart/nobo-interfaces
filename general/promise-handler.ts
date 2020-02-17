@@ -1,11 +1,11 @@
-import { anyValue } from "./any";
+import { anything } from './any';
 
 // TODO document
 
 export type HandlePromise = (promise: PromiseOrPromiseGenerator) => Promise<void>;
 
 export type PromiseOrPromiseGenerator =
-  | Promise<anyValue>
+  | Promise<anything>
   | ((handlePromise: HandlePromise) => PromiseOrPromiseGenerator | undefined);
 
 export interface PromiseHandler_publicInterface {
