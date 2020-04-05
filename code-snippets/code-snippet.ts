@@ -1,6 +1,8 @@
+import { anyValue } from '../general/any';
+
 // TODO document
 
-import { anyValue } from "./any";
+export interface CodeSnippet_forTheWorld<T> {}
 
 export interface CodeSnippetCallInstance {
   retryAfterPromise(promise: Promise<void>, name: string): void;
