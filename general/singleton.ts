@@ -1,6 +1,6 @@
 import { anyValue } from './any';
 import { HandlePromise, PromiseHandlerOwner_asSeenByIts_promiseHandlers } from './promise-handler';
-import { DelayedCaller_forTheWorld } from './delayed_caller';
+import { DelayedCaller_forTheWorld } from './delayed-caller';
 
 // TODO document
 

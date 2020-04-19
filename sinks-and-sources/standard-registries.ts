@@ -1,21 +1,21 @@
 // TODO document
 
-import { ValueName, ValueRegistry_forTheWorld } from './sinks-and-sources';
+import { SourceName, SourceRegistry_forTheWorld } from './sinks-and-sources';
 import { anyValue } from '../general/any';
 
-export type StringName = ValueName<string>;
-export type OptStringName = ValueName<string | undefined>;
-export type NumberName = ValueName<number>;
-export type OptNumberName = ValueName<number | undefined>;
-export type HTMLElementName = ValueName<HTMLElement>;
+export type StringName = SourceName<string>;
+export type OptStringName = SourceName<string | undefined>;
+export type NumberName = SourceName<number>;
+export type OptNumberName = SourceName<number | undefined>;
+export type HTMLElementName = SourceName<HTMLElement>;
 
 export interface StandardSourceRegistries_forTheWorld {
-  optStrings: ValueRegistry_forTheWorld<string | undefined>;
-  strings: ValueRegistry_forTheWorld<string>;
-  optNumbers: ValueRegistry_forTheWorld<number | undefined>;
-  numbers: ValueRegistry_forTheWorld<number>;
-  htmlElements: ValueRegistry_forTheWorld<HTMLElement>;
-  all: ValueRegistry_forTheWorld<anyValue>;
+  optStrings: SourceRegistry_forTheWorld<string | undefined>;
+  strings: SourceRegistry_forTheWorld<string>;
+  optNumbers: SourceRegistry_forTheWorld<number | undefined>;
+  numbers: SourceRegistry_forTheWorld<number>;
+  htmlElements: SourceRegistry_forTheWorld<HTMLElement>;
+  all: SourceRegistry_forTheWorld<anyValue>;
 }
 
 export declare var standardSourceRegistries: StandardSourceRegistries_forTheWorld;

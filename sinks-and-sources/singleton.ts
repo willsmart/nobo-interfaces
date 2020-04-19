@@ -1,17 +1,17 @@
-import { ValueGenerator, ValueRegistry_forTheWorld } from './sinks-and-sources';
-import SourceCleaningPolicy_forTheWorld from '../values/cleaning-policy';
+import { SourceGenerator_forTheWorld, SourceRegistry_forTheWorld } from './sinks-and-sources';
+import SourceCleaningPolicy_forTheWorld from '../sinks-and-sources/cleaning-policy';
 import { HandlePromise } from '../general/promise-handler';
 
 // TODO document
 
-export interface ValuesSingleton_forTheWorld {
-  createValueRegistry<T>({
+export interface SinksAndSourcesSingleton_forTheWorld {
+  createSourceRegistry<T>({
     sourceGenerator,
     SourceCleaningPolicy,
   }: {
-    sourceGenerator: ValueGenerator<T>;
+    sourceGenerator: SourceGenerator_forTheWorld<T>;
     SourceCleaningPolicy: SourceCleaningPolicy_forTheWorld;
-  }): ValueRegistry_forTheWorld<T>;
+  }): SourceRegistry_forTheWorld<T>;
 
   createSourceCleaningPolicy({
     handlePromise,
@@ -24,4 +24,4 @@ export interface ValuesSingleton_forTheWorld {
   }): SourceCleaningPolicy_forTheWorld;
 }
 
-export declare var valuesSingleton: ValuesSingleton_forTheWorld;
+export declare var sinksAndSourcesSingleton: SinksAndSourcesSingleton_forTheWorld;
