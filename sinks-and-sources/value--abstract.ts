@@ -1,11 +1,3 @@
-import {
-  Value_refInterface,
-  Value_ownerInterface,
-  Value_subclassInterface,
-  ValueRef_valueInterface as ValueRef,
-  Value_stateForOwner,
-} from './refs-and-values';
-
 type RefAndKey<T> = {
   ref: ValueRef<T>;
   key: string | undefined;
@@ -21,16 +13,10 @@ interface PrivateData<T> {
 }
 
 export type Value_abstract_constructorArgPassback<T> = {
-  owner?: Value_ownerInterface<T>;
+  owner?: Value_asSeenByIts_owners<T>;
 };
 
-export type Value_abstract_constructorArgs<T> = {
-  interfacePassback: Value_abstract_constructorArgPassback<T>;
-  value: T;
-  valid: boolean;
-};
-
-export abstract class Value_abstract<T> implements Value_refInterface<T> {
+export abstract class Value_abstract<T> implements Value_asSeenByIts_refs<T> {
   constructor({ interfacePassback, value, valid }: Value_abstract_constructorArgs<T>) {
     this.privateData = {
       cachedValue: value,
@@ -44,7 +30,7 @@ export abstract class Value_abstract<T> implements Value_refInterface<T> {
       cleanup: this.cleanup.bind(this),
       refInterface: () => this,
     };
-    const _verifyThatThisImplementsTheSubclassInterface: Value_subclassInterface<T> = {
+    const _asSeenByIts_verifyThatThisImplementsTheSubclasss: Value_asSeenByIts_subclasss<T> = {
       valueFromSubclass: this.valueFromSubclass,
       subclassValueWasInvalidated: this.subclassValueWasInvalidated,
       subclassHasNewValue: this.subclassHasNewValue,
@@ -52,7 +38,7 @@ export abstract class Value_abstract<T> implements Value_refInterface<T> {
     };
   }
 
-  // Value_refInterface
+  // Value_asSeenByIts_refs
   // The interface presented to attached refs or anyone who has a reference to the value
   setValue(v: T): Promise<T> {
     const vsrc = this,
@@ -93,7 +79,7 @@ export abstract class Value_abstract<T> implements Value_refInterface<T> {
     return this.valueFromValue;
   }
 
-  // Value_ownerInterface
+  // Value_asSeenByIts_owners
   // The interface presented to the value registry or whatever object created the value
   private addRef(ref: ValueRef<T>, key?: string): ValueRef<T> {
     const {
@@ -127,7 +113,7 @@ export abstract class Value_abstract<T> implements Value_refInterface<T> {
     privateData.refs.clear();
   }
 
-  // Value_subclassInterface
+  // Value_asSeenByIts_subclasss
   // the interface presented to subclasses
   protected abstract valueFromSubclass(): Promise<T> | undefined;
   protected abstract setValuesInSubclass(v: T[]): Promise<T> | undefined;

@@ -1,10 +1,10 @@
-import { ValueRegistry_refInterface, Value_refInterface } from '../values/refs-and-values';
-import { CodeSnippet_publicInterface } from './code-snippet';
+import { ValueRegistry_asSeenByIts_refs, Value_asSeenByIts_refs } from '../values/sinks-and-sources';
+import { CodeSnippet_forTheWorld } from './code-snippet';
 
 // TODO document
 
-export interface CodeSnippetSingleton_publicInterface {
-  codeSnippetValueRegistry(): ValueRegistry_refInterface<Value_refInterface<CodeSnippet_publicInterface<string>>>;
+export interface CodeSnippetSingleton_forTheWorld {
+  codeSnippetValueRegistry(): ValueRegistry_asSeenByIts_refs<Value_asSeenByIts_refs<CodeSnippet_forTheWorld<string>>>;
 }
 
-export declare var codeSnippetSingleton: CodeSnippetSingleton_publicInterface;
+export declare var codeSnippetSingleton: CodeSnippetSingleton_forTheWorld;

@@ -1,11 +1,11 @@
 import { anyValue } from './any';
-import { HandlePromise, PromiseHandlerOwner_promiseHandlerInterface } from './promise-handler';
-import { DelayedCaller_publicInterface } from './delayed_caller';
+import { HandlePromise, PromiseHandlerOwner_asSeenByIts_promiseHandlers } from './promise-handler';
+import { DelayedCaller_forTheWorld } from './delayed_caller';
 
 // TODO document
 
-export interface GeneralSingleton_publicInterface {
-  createDelayedCaller: ({ delayMs, sliceMs }: { delayMs: number; sliceMs: number }) => DelayedCaller_publicInterface;
+export interface GeneralSingleton_forTheWorld {
+  createDelayedCaller: ({ delayMs, sliceMs }: { delayMs: number; sliceMs: number }) => DelayedCaller_forTheWorld;
 
   mapValues<T extends { [k: string]: I; [Symbol.iterator]: Iterator<anyValue, any, undefined> }, I, O>(
     object: T,
@@ -16,7 +16,7 @@ export interface GeneralSingleton_publicInterface {
 
   handlePromise: HandlePromise;
 
-  promiseOwner: PromiseHandlerOwner_promiseHandlerInterface;
+  promiseOwner: PromiseHandlerOwner_asSeenByIts_promiseHandlers;
 }
 
-export declare var generalSingleton: GeneralSingleton_publicInterface;
+export declare var generalSingleton: GeneralSingleton_forTheWorld;

@@ -8,12 +8,12 @@ export type PromiseOrPromiseGenerator =
   | Promise<anything>
   | ((handlePromise: HandlePromise) => PromiseOrPromiseGenerator | undefined);
 
-export interface PromiseHandler_publicInterface {
+export interface PromiseHandler_forTheWorld {
   requestClearPromises(): Promise<void>;
   handle(promise: PromiseOrPromiseGenerator): Promise<void>;
   clearPromises(): Promise<void>;
 }
 
-export interface PromiseHandlerOwner_promiseHandlerInterface {
-  clearPromises(clearPromises: () => Promise<void>, handler: PromiseHandler_publicInterface): Promise<void>;
+export interface PromiseHandlerOwner_asSeenByIts_promiseHandlers {
+  clearPromises(clearPromises: () => Promise<void>, handler: PromiseHandler_forTheWorld): Promise<void>;
 }

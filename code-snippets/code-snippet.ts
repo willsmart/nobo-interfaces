@@ -2,7 +2,7 @@ import { anyValue } from '../general/any';
 
 // TODO document
 
-export interface CodeSnippet_publicInterface<T> {}
+export interface CodeSnippet_forTheWorld<T> {}
 
 export interface CodeSnippetCallInstance {
   retryAfterPromise(promise: Promise<void>, name: string): void;
